@@ -390,6 +390,7 @@ GameObject:
   - component: {fileID: 730814143}
   - component: {fileID: 730814142}
   - component: {fileID: 730814146}
+  - component: {fileID: 730814147}
   m_Layer: 0
   m_Name: MarbleQuad
   m_TagString: Untagged
@@ -496,6 +497,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7869bbe243db05b47a1d88aa0e59ad15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 330585545}
+--- !u!114 &730814147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730814141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9d2afb8a7b0eb4989b9806fd3a08fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetMaterial: {fileID: 2100000, guid: 27356ff07d1947e488a28950430047df, type: 2}
   mainCamera: {fileID: 330585545}
 --- !u!1 &832575517
 GameObject:
