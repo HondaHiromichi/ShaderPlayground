@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class WebCamController : MonoBehaviour
 {
+    public Slider slider;
     // 色相が1周する時間 (秒)
     public float cycleDuration = 1f;
     // HDRカラーの強度
@@ -21,6 +22,8 @@ public class WebCamController : MonoBehaviour
         GetComponent<Renderer>().material.mainTexture = webcamTexture;
         GetComponent<Renderer>().material.SetTexture("_Texture", webcamTexture);
         webcamTexture.Play();
+
+        GetComponent<Renderer>().material.SetFloat("_Threshold ", slider.value);
     }
 
     void Update()
@@ -42,5 +45,11 @@ public class WebCamController : MonoBehaviour
 
         // マテリアルに色を設定
         GetComponent<Renderer>().material.SetColor("_Color", rgbColor);
+    }
+
+    public void SliderValueChanged()
+    {
+        Debug.Log($"slider.value : {slider.value}");
+        GetComponent<Renderer>().material.SetFloat("_Threshold", slider.value);
     }
 }
