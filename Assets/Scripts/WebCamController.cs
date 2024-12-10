@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class WebCamController : MonoBehaviour
 {
-    public Slider slider;
+    public Slider intensitySlider;
+    public Slider grayScaleSlider;
+    public Slider thresholdSlider;
+
     // 色相が1周する時間 (秒)
     public float cycleDuration = 1f;
     // HDRカラーの強度
-    public float intensity = 1f;
+    public float intensity = 2f;
     int width = 1920;
     int height = 1080;
     int fps = 30;
@@ -23,7 +26,9 @@ public class WebCamController : MonoBehaviour
         GetComponent<Renderer>().material.SetTexture("_Texture", webcamTexture);
         webcamTexture.Play();
 
-        GetComponent<Renderer>().material.SetFloat("_Threshold ", slider.value);
+        GetComponent<Renderer>().material.SetFloat("_GrayScaleFactor", grayScaleSlider.value);
+        GetComponent<Renderer>().material.SetFloat("_Threshold ", thresholdSlider.value);
+        intensity = intensitySlider.value;
     }
 
     void Update()
@@ -47,9 +52,21 @@ public class WebCamController : MonoBehaviour
         GetComponent<Renderer>().material.SetColor("_Color", rgbColor);
     }
 
-    public void SliderValueChanged()
+    public void IntensitySliderValueChanged()
     {
-        Debug.Log($"slider.value : {slider.value}");
-        GetComponent<Renderer>().material.SetFloat("_Threshold", slider.value);
+        Debug.Log($"intensity slider.value : {intensitySlider.value}");
+        intensity = intensitySlider.value;
+    }
+
+    public void GrayScaleSliderValueChanged()
+    {
+        Debug.Log($"gray scale slider.value : {grayScaleSlider.value}");
+        GetComponent<Renderer>().material.SetFloat("_GrayScaleFactor", grayScaleSlider.value);
+    }
+
+    public void ThresholdSliderValueChanged()
+    {
+        Debug.Log($"threshold slider.value : {thresholdSlider.value}");
+        GetComponent<Renderer>().material.SetFloat("_Threshold", thresholdSlider.value);
     }
 }
